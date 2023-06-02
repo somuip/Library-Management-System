@@ -1,25 +1,21 @@
 package com.example.librarymanagementsystem.DTO.ResponseDtos;
 
-import com.example.librarymanagementsystem.enums.Department;
+import com.example.librarymanagementsystem.model.Book;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
-public class StudentResponseDtos {
+public class AuthorResponseDtos {
     private int id;
-
     private String name;
-
-    private int age;
-
-    private Department department;
-
-    private String mobNo;
-
-    CardResponseDto cardResponseDto;
+    private String email;
+    private String  qualification;
+    private List<Book> books;
 }

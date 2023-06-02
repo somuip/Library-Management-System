@@ -1,5 +1,7 @@
 package com.example.librarymanagementsystem.service.imple;
 
+import com.example.librarymanagementsystem.DTO.RequestDtos.AuthorRequestDtos;
+import com.example.librarymanagementsystem.DTO.ResponseDtos.AuthorResponseDtos;
 import com.example.librarymanagementsystem.model.Author;
 import com.example.librarymanagementsystem.repository.AuthorRepository;
 import com.example.librarymanagementsystem.service.AuthorService;
@@ -15,8 +17,22 @@ public class AuthorServiceImple implements AuthorService {
 
 
     @Override
-    public String addAuthor(Author author) {
+    public AuthorResponseDtos addAuthor(AuthorRequestDtos authorRequestDtos) {
+
+        Author author = new Author();;
+        author.setEmail(authorRequestDtos.getEmail());
+        author.setName(authorRequestDtos.getName());
+        author.setQualification(authorRequestDtos.getQualification());
         authorRepository.save(author);
-        return "added successfully";
+
+        // prepare for response dto
+        AuthorResponseDtos authorResponseDtos = new AuthorResponseDtos();
+        authorResponseDtos.setName(author.getName());
+        authorResponseDtos.setBooks(author.getBooks());
+        authorResponseDtos.setId(author.getId());
+        authorResponseDtos.setEmail(author.getEmail());
+        authorResponseDtos.setQualification(author.getQualification());
+
+        return authorResponseDtos;
     }
 }

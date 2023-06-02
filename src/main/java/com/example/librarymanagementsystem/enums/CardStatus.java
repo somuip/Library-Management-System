@@ -1,7 +1,7 @@
 package com.example.librarymanagementsystem.enums;
 
-public enum Status {
-    ACTIVE,
-    INACTIVE,
+public enum CardStatus {
+    ACTIVATED,
+    EXPIRED,
     BLOCKED
 }

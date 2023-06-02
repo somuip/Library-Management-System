@@ -27,7 +27,7 @@ public class Student {
     @Enumerated(EnumType.STRING)
     private Department department;
 
-    private String mobile;
+    private String mobNo;
 
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL) // "cascade" automatically makes crud ope of child when we done on parent
     Card card;
