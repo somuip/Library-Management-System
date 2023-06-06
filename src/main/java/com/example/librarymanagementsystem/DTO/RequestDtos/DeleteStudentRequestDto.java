@@ -5,8 +5,7 @@ import lombok.experimental.FieldDefaults;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
+@Data
 @FieldDefaults(level = AccessLevel.PRIVATE) // makes all attribute private
 public class DeleteStudentRequestDto {
     int id;

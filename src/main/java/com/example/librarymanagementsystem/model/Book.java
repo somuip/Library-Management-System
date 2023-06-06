@@ -35,6 +35,7 @@ public class Book {
 
 
     @ManyToOne
+    @JoinColumn
     Author author;
 
     @ManyToOne

@@ -6,10 +6,9 @@ import com.example.librarymanagementsystem.exceptions.AuthorNotFoundException;
 import com.example.librarymanagementsystem.model.Book;
 import com.example.librarymanagementsystem.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/book")
@@ -20,7 +19,22 @@ public class BookController {
 
     @PostMapping("/add-book")
     public BookResponseDtos addBook(@RequestBody BookRequestDtos bookRequestDtos) throws AuthorNotFoundException {
-
         return bookService.addBook(bookRequestDtos);
     }
+
+    @GetMapping("/find-all-books")
+    public List<BookResponseDtos> getAllBooks(){
+        return bookService.findAllBooks();
+    }
+
+    @GetMapping("/find-book-of-author")
+    public List<BookResponseDtos> findAllBooksOfAuthor(@RequestParam("authorId") int authorId) throws AuthorNotFoundException {
+        return bookService.findAllBooksOfAuthor(authorId);
+    }
+
+    @GetMapping("/find-number-of-books-author")
+    public int findNumberOfBooksOfAuthor(@RequestParam("authorId") int authorId) throws AuthorNotFoundException {
+        return bookService.findNumberOfBooksOfAuthor(authorId);
+    }
+
 }
